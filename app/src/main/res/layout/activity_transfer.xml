@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.carlomatulessy.demobankapp.TransferActivity">
+
+    <RelativeLayout
+        android:id="@+id/transfer_container_useraccount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginBottom="10dp"
+        android:paddingBottom="20dp"
+        android:paddingTop="10dp">
+
+        <ImageView
+            android:id="@+id/account_icon"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/signup_male"
+            android:layout_marginRight="10dp"/>
+
+        <TextView
+            android:id="@+id/account_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/account_name"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:layout_toRightOf="@id/account_icon"/>
+
+        <TextView
+            android:id="@+id/account_iban"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="NL34 INGB 0008 0000 12"
+            android:textSize="15sp"
+            android:layout_toRightOf="@id/account_icon"
+            android:layout_below="@id/account_name"/>
+
+        <TextView
+            android:id="@+id/account_amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="$1000"
+            android:textSize="20sp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:textStyle="bold"
+            android:paddingRight="10dp"/>
+
+    </RelativeLayout>
+
+    <EditText
+        android:id="@+id/transfer_amount_edittext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/transfer_container_useraccount"
+        android:inputType="numberDecimal"
+        android:hint="Amount"/>
+
+    <EditText
+        android:id="@+id/transfer_beneficiary_edittext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/transfer_amount_edittext"
+        android:inputType="textPersonName"
+        android:hint="Beneficiary"/>
+
+    <EditText
+        android:id="@+id/transfer_iban_edittext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/transfer_beneficiary_edittext"
+        android:hint="IBAN"/>
+
+    <EditText
+        android:id="@+id/transfer_acceptgiro_edittext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/transfer_iban_edittext"
+        android:inputType="number"
+        android:hint="Acceptgiro number"/>
+
+
+    <EditText
+        android:id="@+id/transfer_paymentdescription_edittext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/transfer_acceptgiro_edittext"
+        android:hint="Payment description"/>
+
+    <Button
+        android:id="@+id/payment_button"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:background="@android:color/holo_blue_bright"
+        android:text="@string/next_button"
+        android:layout_alignParentBottom="true"
+        android:onClick="goToSummaryScreen"/>
+
+</RelativeLayout>

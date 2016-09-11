@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">DemoBankApp</string>
+    <string name="dahsboard_name">Espresso Bank</string>
+    <string name="transfer_button">Transfer</string>
+    <string name="next_button">Next</string>
+    <string name="account_name">Evelien</string>
+</resources>
