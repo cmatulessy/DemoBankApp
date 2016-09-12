@@ -60,6 +60,9 @@ public class StepDefinitions extends ActivityInstrumentationTestCase2<MainActivi
     final String BENEFICIARY_FIELD = "beneficiary";
     final String ACCOUNTNUMBER_FIELD = "accountnumber";
 
+    final String featureTitle = "Feature Payments";
+    final String scenarioTitle = "Scenario Outline As a user I want to make a payment";
+
     public StepDefinitions() {
         super(MainActivity.class);
     }
@@ -125,7 +128,7 @@ public class StepDefinitions extends ActivityInstrumentationTestCase2<MainActivi
             onView(withId(id)).check(matches(isDisplayed()));
         }
 
-        Spoon.screenshot(getActivity(), screenTitle);
+        Spoon.screenshot(getActivity(), screenTitle, featureTitle, scenarioTitle);
     }
 
     @And("^I enter \"([^\"]*)\" in the \"([^\"]*)\" field$")
