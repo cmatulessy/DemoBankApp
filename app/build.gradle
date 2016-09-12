@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'spoon'
 
 android {
     compileSdkVersion 23
@@ -38,6 +39,24 @@ android {
     }
 
 
+}
+
+spoon {
+
+    // Enable debug output
+    debug = true
+
+    // Set custom test reports directory (defaults to "spoon")
+    baseOutputDir = file("$buildDir/spoon-reports")
+    adbTimeout = 30
+
+    codeCoverage = true
+
+    grantAllPermissions = true
+}
+
+repositories {
+    mavenCentral()
 }
 
 dependencies {
@@ -81,6 +100,6 @@ dependencies {
 
     androidTestCompile 'info.cukes:cucumber-jvm-deps:1.0.3'
     // Screenshots
-    androidTestCompile 'com.squareup.spoon:spoon-client:1.2.0'
+    androidTestCompile "com.squareup.spoon:spoon-client:1.6.4"
 
 }

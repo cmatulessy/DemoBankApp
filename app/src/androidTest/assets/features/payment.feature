@@ -13,7 +13,7 @@ Feature: Payments
         And I tap on button "Next"
       And I see the screen "Summary"
         And I tap on button "Transfer"
-      And I see the screen "Espresso Bank"
+      #And I see the screen "dashboard"
     Then my test has passed
 
 
