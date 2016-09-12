@@ -25,7 +25,7 @@ public class SummaryActivity extends AppCompatActivity {
 
         accountName.setText(DataBuilder.getUser().getName());
         accountIban.setText(DataBuilder.getUser().getIban());
-        accountAmount.setText( "€ "+ DataBuilder.getUser().getAmount());
+        accountAmount.setText( "€ "+ String.format("%.2f",DataBuilder.getUser().getAmount()));
 
         Drawable userIcon = ResourcesCompat.getDrawable(getResources(), R.drawable.carlo, null);
         accountIcon.setImageDrawable(userIcon);
@@ -36,7 +36,7 @@ public class SummaryActivity extends AppCompatActivity {
 
         inputAccountName.setText(DataBuilder.getInputAccount().getName());
         inputAccountIban.setText(DataBuilder.getInputAccount().getIban());
-        inputAccountAmount.setText("- € "+ DataBuilder.getInputAccount().getAmount());
+        inputAccountAmount.setText("- € "+ String.format("%.2f",DataBuilder.getInputAccount().getAmount()));
 
     }
 

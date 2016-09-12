@@ -50,7 +50,7 @@ public class MutationListAdapter extends ArrayAdapter {
 
         accountName.setText(accounts.get(position).getName());
         accountIban.setText(accounts.get(position).getIban());
-        accountAmount.setText("- € "+ accounts.get(position).getAmount());
+        accountAmount.setText("- € "+ String.format("%.2f",accounts.get(position).getAmount()));
 
         return rowView;
 
