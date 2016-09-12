@@ -7,7 +7,7 @@ public class Account {
 
     private String name;
     private String iban;
-    private int amount;
+    private double amount;
     private boolean gender;
 
     private String acceptgiro;
@@ -53,11 +53,11 @@ public class Account {
         this.iban = iban;
     }
 
-    public int getAmount() {
+    public double getAmount() {
         return amount;
     }
 
-    public void setAmount(int amount) {
+    public void setAmount(double amount) {
         this.amount = amount;
     }
 

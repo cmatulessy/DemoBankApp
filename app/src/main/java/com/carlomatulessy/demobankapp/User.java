@@ -7,7 +7,7 @@ public class User {
 
     private String name;
     private String iban;
-    private int amount;
+    private double amount;
 
     public String getName() {
         return name;
@@ -25,11 +25,11 @@ public class User {
         this.iban = iban;
     }
 
-    public int getAmount() {
+    public double getAmount() {
         return amount;
     }
 
-    public void setAmount(int amount) {
+    public void setAmount(double amount) {
         this.amount = amount;
     }
 

@@ -73,7 +73,7 @@
         android:hint="Beneficiary"/>
 
     <EditText
-        android:id="@+id/transfer_iban_edittext"
+        android:id="@+id/transfer_accountnumber_edittext"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/transfer_beneficiary_edittext"
@@ -83,7 +83,7 @@
         android:id="@+id/transfer_acceptgiro_edittext"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/transfer_iban_edittext"
+        android:layout_below="@id/transfer_accountnumber_edittext"
         android:inputType="number"
         android:hint="Acceptgiro number"/>
 

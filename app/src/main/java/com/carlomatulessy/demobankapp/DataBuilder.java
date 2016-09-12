@@ -54,10 +54,10 @@ public class DataBuilder {
     }
 
     public static void updateUserAmount() {
-        int userCurrentAmount = user.getAmount();
-        int inputAccountAmount = inputAccount.getAmount();
+        double userCurrentAmount = user.getAmount();
+        double inputAccountAmount = inputAccount.getAmount();
 
-        int userNewAmount = userCurrentAmount - inputAccountAmount;
+        double userNewAmount = userCurrentAmount - inputAccountAmount;
 
         user.setAmount(userNewAmount);
     }

@@ -2,7 +2,7 @@ Feature: Payments
   Making a payment from my own account
 
   @test
-  Scenario: As a user I want to make a payment
+  Scenario Outline: As a user I want to make a payment
 
     Given I am on the dashboard
     When I tap on button "Transfer"
@@ -15,3 +15,8 @@ Feature: Payments
         And I tap on button "Transfer"
       And I see the screen "Espresso Bank"
     Then my test has passed
+
+
+    Examples:
+      | name     | account number         |
+      | Espresso | NL34 INGB 0001 1234 56 |

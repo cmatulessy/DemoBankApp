@@ -1,6 +1,7 @@
 package com.carlomatulessy.demobankapp.cucumber.gluecode;
 
 import android.support.test.InstrumentationRegistry;
+import android.support.test.espresso.Espresso;
 import android.test.ActivityInstrumentationTestCase2;
 
 import com.carlomatulessy.demobankapp.MainActivity;
@@ -15,6 +16,7 @@ import cucumber.api.java.en.When;
 
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
+import static android.support.test.espresso.action.ViewActions.typeText;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 
 /**
@@ -24,8 +26,16 @@ public class StepDefinitions extends ActivityInstrumentationTestCase2<MainActivi
 
     final int ID_PAYMENT_BUTTON = R.id.payment_button;
     final int ID_NEXT_BUTTON = R.id.payment_button;
+    final int ID_AMOUNT_FIELD = R.id.transfer_amount_edittext;
+    final int ID_BENEFICIARY_FIELD = R.id.transfer_beneficiary_edittext;
+    final int ID_ACCOUNTNUMBER_FIELD = R.id.transfer_accountnumber_edittext;
+
+
     final String PAYMENT_BUTTON = "transfer";
     final String NEXT_BUTTON = "next";
+    final String AMOUNT_FIELD = "amount";
+    final String BENEFICIARY_FIELD = "beneficiary";
+    final String ACCOUNTNUMBER_FIELD = "accountnumber";
 
     public StepDefinitions() {
         super(MainActivity.class);
@@ -53,7 +63,7 @@ public class StepDefinitions extends ActivityInstrumentationTestCase2<MainActivi
     public void iTapOnButton(String buttonName) throws Throwable {
 
         int buttonId;
-        switch(buttonName) {
+        switch(buttonName.toLowerCase()) {
             case PAYMENT_BUTTON :
                 buttonId = ID_PAYMENT_BUTTON;
                 break;
@@ -62,8 +72,8 @@ public class StepDefinitions extends ActivityInstrumentationTestCase2<MainActivi
                 break;
             default:
                 buttonId = ID_PAYMENT_BUTTON;
+                break;
         }
-
 
         onView(withId(buttonId)).perform(click());
 
@@ -76,7 +86,25 @@ public class StepDefinitions extends ActivityInstrumentationTestCase2<MainActivi
 
     @And("^I enter \"([^\"]*)\" in the \"([^\"]*)\" field$")
     public void iEnterInTheField(String value, String editTextName) throws Throwable {
+        int editTextId;
+        switch (editTextName) {
+            case AMOUNT_FIELD :
+                editTextId = ID_AMOUNT_FIELD;
+                break;
+            case BENEFICIARY_FIELD :
+                editTextId = ID_BENEFICIARY_FIELD;
+                break;
+            case ACCOUNTNUMBER_FIELD :
+                editTextId = ID_ACCOUNTNUMBER_FIELD;
+                break;
+            default:
+                editTextId = ID_AMOUNT_FIELD;
+                break;
+        }
 
+        onView(withId(editTextId)).perform(typeText(value));
+
+        Espresso.closeSoftKeyboard();
     }
 
     @Then("^my test has passed$")

@@ -1,12 +1,10 @@
 package com.carlomatulessy.demobankapp;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
-import android.support.v4.content.res.ResourcesCompat;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v4.content.res.ResourcesCompat;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -39,7 +37,7 @@ public class TransferActivity extends AppCompatActivity {
 
         inputAmount = (EditText) findViewById(R.id.transfer_amount_edittext);
         inputBeneficiary = (EditText) findViewById(R.id.transfer_beneficiary_edittext);
-        inputIban = (EditText) findViewById(R.id.transfer_iban_edittext);
+        inputIban = (EditText) findViewById(R.id.transfer_accountnumber_edittext);
         inputAcceptGiro = (EditText) findViewById(R.id.transfer_acceptgiro_edittext);
         inputPaymentDescription = (EditText) findViewById(R.id.transfer_paymentdescription_edittext);
 
@@ -49,7 +47,7 @@ public class TransferActivity extends AppCompatActivity {
         try {
             Account account = new Account();
             account.setGender(true);
-            account.setAmount(Integer.parseInt(inputAmount.getText().toString()));
+            account.setAmount(Double.parseDouble(inputAmount.getText().toString()));
             account.setName(inputBeneficiary.getText().toString());
             account.setIban(inputIban.getText().toString());
             account.setAcceptgiro(inputAcceptGiro.getText().toString());
@@ -63,6 +61,8 @@ public class TransferActivity extends AppCompatActivity {
         } catch (Exception ex) {
             Toast toast = Toast.makeText(this, "Please fill in all fields before proceeding...", Toast.LENGTH_SHORT);
             toast.show();
+
+            ex.printStackTrace();
         }
     }
 }
