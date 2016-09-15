@@ -107,6 +107,8 @@ public class StepDefinitions extends ActivityInstrumentationTestCase2<MainActivi
 
     @And("^I see the screen \"([^\"]*)\"$")
     public void iSeeTheScreen(String screenTitle) throws Throwable {
+        Spoon.screenshot(getActivity(), screenTitle, featureTitle, scenarioTitle);
+
         int[] screenUIElements;
 
         switch(screenTitle.toLowerCase()) {
@@ -127,8 +129,6 @@ public class StepDefinitions extends ActivityInstrumentationTestCase2<MainActivi
         for(int id : screenUIElements) {
             onView(withId(id)).check(matches(isDisplayed()));
         }
-
-        Spoon.screenshot(getActivity(), screenTitle, featureTitle, scenarioTitle);
     }
 
     @And("^I enter \"([^\"]*)\" in the \"([^\"]*)\" field$")
