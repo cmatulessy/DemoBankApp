@@ -128,6 +128,7 @@ public class StepDefinitions extends ActivityInstrumentationTestCase2<MainActivi
 
         for(int id : screenUIElements) {
             onView(withId(id)).check(matches(isDisplayed()));
+            // New comment to show stuff
         }
     }
 
