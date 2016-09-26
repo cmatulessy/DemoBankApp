@@ -98,8 +98,10 @@
     <Button
         android:id="@+id/payment_button"
         android:layout_width="match_parent"
-        android:layout_height="75dp"
-        android:background="@android:color/holo_blue_bright"
+        android:layout_height="50dp"
+        android:background="@color/colorButton"
+        android:textColor="@color/colorAccent"
+        android:textSize="18dp"
         android:text="@string/next_button"
         android:layout_alignParentBottom="true"
         android:onClick="goToSummaryScreen"/>
