@@ -7,6 +7,9 @@ import android.os.Bundle;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
@@ -60,6 +63,39 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch(item.getItemId()) {
+            case R.id.action_reset :
+                resetTransferData();
+                break;
+        }
+
+        return true;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        if(DataBuilder.recreateDashboard) {
+            DataBuilder.recreateDashboard = false;
+            super.recreate();
+        }
+    }
+
+    private void resetTransferData() {
+        DataBuilder.resetTestData();
+        mlAdapt.notifyDataSetChanged();
+    }
+
     private void showAccountDetails(int position) {
         final Account selectedAccount = DataBuilder.getAccounts().get(position);
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
@@ -67,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
         alertDialogBuilder.setTitle("Mutation info");
         alertDialogBuilder
                 .setMessage(selectedAccount.getName() + " - " + "€ "+ String.format("%.2f",selectedAccount.getAmount()))
-                .setCancelable(false)
+                .setCancelable(true)
                 .setPositiveButton("Transfer", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -86,7 +122,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void transferDialogTransfer() {
-
+        //TODO implement this
     }
 
     private void transferDialogDelete(Account accountDelete) {
@@ -106,13 +142,5 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
 
-        if(DataBuilder.recreateDashboard) {
-            DataBuilder.recreateDashboard = false;
-            super.recreate();
-        }
-    }
 }

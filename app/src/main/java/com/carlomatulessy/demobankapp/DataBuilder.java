@@ -74,4 +74,9 @@ public class DataBuilder {
         return inputAccount;
     }
 
+    public static void resetTestData() {
+        accounts.clear();
+        createAccounts();
+    }
+
 }
