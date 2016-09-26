@@ -126,7 +126,7 @@
         android:id="@+id/payment_button"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@color/colorButton"
+        android:background="@drawable/capgemini_button"
         android:textColor="@color/colorAccent"
         android:textSize="18dp"
         android:text="@string/transfer_button"
