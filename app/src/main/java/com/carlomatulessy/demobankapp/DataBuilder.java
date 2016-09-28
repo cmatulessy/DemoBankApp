@@ -76,6 +76,7 @@ public class DataBuilder {
 
     public static void resetTestData() {
         accounts.clear();
+        createUser();
         createAccounts();
     }
 

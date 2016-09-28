@@ -100,6 +100,7 @@ public class MainActivity extends AppCompatActivity {
     private void resetTransferData() {
         DataBuilder.resetTestData();
         mlAdapt.notifyDataSetChanged();
+        accountAmount.setText("€ "+ String.format("%.2f",DataBuilder.getUser().getAmount()));
     }
 
     private void openAboutPage() {
