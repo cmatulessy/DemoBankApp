@@ -122,6 +122,7 @@ public class MainActivity extends AppCompatActivity {
         TextView accountName = (TextView) dialog.findViewById(R.id.mutation_account_name);
         TextView accountIban = (TextView) dialog.findViewById(R.id.mutation_account_iban);
         TextView accountAmount = (TextView) dialog.findViewById(R.id.mutation_account_amount);
+        TextView accountDescription = (TextView) dialog.findViewById(R.id.mutation_account_description);
 
         Button mutationDeleteButton = (Button) dialog.findViewById(R.id.mutation_delete_button);
         Button mutationTransferButton = (Button) dialog.findViewById(R.id.mutation_transfer_button);
@@ -129,6 +130,10 @@ public class MainActivity extends AppCompatActivity {
         accountName.setText(selectedAccount.getName());
         accountIban.setText(selectedAccount.getIban());
         accountAmount.setText( "- € "+ String.format("%.2f",selectedAccount.getAmount()));
+
+        if(selectedAccount.getPaymentDescription() != null) {
+            accountDescription.setText("Description: " + selectedAccount.getPaymentDescription());
+        }
 
         mutationDeleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
