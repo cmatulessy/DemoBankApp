@@ -5,6 +5,11 @@
         android:icon="@android:drawable/ic_menu_revert"
         android:title="Reset data" />
     <item
+        android:id="@+id/action_capgemini"
+        android:icon="@android:drawable/ic_menu_call"
+        android:title="Werken bij Capgemini"/>
+
+    <item
         android:id="@+id/action_about"
         android:icon="@android:drawable/ic_menu_info_details"
         android:title="About" />

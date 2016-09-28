@@ -72,4 +72,9 @@ public class TransferActivity extends AppCompatActivity {
             ex.printStackTrace();
         }
     }
+
+    @Override
+    public void onBackPressed(){
+        finish();
+    }
 }

@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        getSupportActionBar().setTitle("Espresso Bank");
+        getSupportActionBar().setTitle(getResources().getString(R.string.app_name));
 
         //Button transferBtn = (Button) findViewById(R.id.payment_button);
         mutationList = (ListView) findViewById(R.id.mutation_list);
@@ -76,6 +76,12 @@ public class MainActivity extends AppCompatActivity {
             case R.id.action_reset :
                 resetTransferData();
                 break;
+            case R.id.action_about :
+                openAboutPage();
+                break;
+            case R.id.action_capgemini :
+                openWerkenBijCapgeminiWebview();
+                break;
         }
 
         return true;
@@ -94,6 +100,16 @@ public class MainActivity extends AppCompatActivity {
     private void resetTransferData() {
         DataBuilder.resetTestData();
         mlAdapt.notifyDataSetChanged();
+    }
+
+    private void openAboutPage() {
+        Intent aboutIntent = new Intent(this, AboutActivity.class);
+        startActivity(aboutIntent);
+    }
+
+    private void openWerkenBijCapgeminiWebview() {
+        Intent aboutIntent = new Intent(this, CapgeminiActivity.class);
+        startActivity(aboutIntent);
     }
 
     private void showAccountDetails(int position) {

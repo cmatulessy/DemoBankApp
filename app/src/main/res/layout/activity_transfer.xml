@@ -55,45 +55,66 @@
             android:paddingRight="10dp"/>
 
     </RelativeLayout>
-
-    <EditText
-        android:id="@+id/transfer_amount_edittext"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/transfer_container_useraccount"
-        android:inputType="numberDecimal"
-        android:hint="Amount"/>
+        android:layout_height="match_parent"
+        android:layout_below="@id/transfer_container_useraccount">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <EditText
+                android:id="@+id/transfer_amount_edittext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                android:hint="Amount"
+                android:padding="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/capgemini_edittext"/>
 
-    <EditText
-        android:id="@+id/transfer_beneficiary_edittext"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/transfer_amount_edittext"
-        android:inputType="textPersonName"
-        android:hint="Beneficiary"/>
+            <EditText
+                android:id="@+id/transfer_beneficiary_edittext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:hint="Beneficiary"
+                android:padding="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/capgemini_edittext"/>
 
-    <EditText
-        android:id="@+id/transfer_accountnumber_edittext"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/transfer_beneficiary_edittext"
-        android:hint="IBAN"/>
+            <EditText
+                android:id="@+id/transfer_accountnumber_edittext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="IBAN"
+                android:padding="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/capgemini_edittext"/>
 
-    <EditText
-        android:id="@+id/transfer_acceptgiro_edittext"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/transfer_accountnumber_edittext"
-        android:inputType="number"
-        android:hint="Acceptgiro number"/>
+            <EditText
+                android:id="@+id/transfer_acceptgiro_edittext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:hint="Acceptgiro number"
+                android:padding="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/capgemini_edittext"/>
 
 
-    <EditText
-        android:id="@+id/transfer_paymentdescription_edittext"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/transfer_acceptgiro_edittext"
-        android:hint="Payment description"/>
+            <EditText
+                android:id="@+id/transfer_paymentdescription_edittext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Payment description"
+                android:padding="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/capgemini_edittext"/>
+
+
+        </LinearLayout>
+    </ScrollView>
 
     <Button
         android:id="@+id/payment_button"

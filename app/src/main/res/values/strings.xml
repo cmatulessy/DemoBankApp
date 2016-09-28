@@ -1,6 +1,9 @@
 <resources>
-    <string name="app_name">DemoBankApp</string>
-    <string name="dahsboard_name">Espresso Bank</string>
+    <string name="app_name">Capgemini Bank</string>
+    <string name="dahsboard_name">Capgemini Bank</string>
+    <string name="about_title">About</string>
+    <string name="capgemini_title">Werken bij Capgemini</string>
+
     <string name="transfer_button">Transfer</string>
     <string name="next_button">Next</string>
     <string name="account_name">Evelien</string>
@@ -8,4 +11,17 @@
     <string name="dialog_mutation_info_title">Mutation info</string>
     <string name="dialog_mutation_delete_button">Delete</string>
     <string name="dialog_mutation_transfer_button">Transfer</string>
+
+    <string name="about_text">This app is constructed to showcase how to do UI Automation with Cucumber and Espresso. The app is used in the workshop given by Carlo Matulessy and Samuel Maljaars on TestNet Najaarsevent 2016.</string>
+    <string name="about_testnet_button">TestNet NajaarsEvent 2016</string>
+    <string name="about_github_button">Github project</string>
+    <string name="about_carlo_button">Carlo Matulessy</string>
+    <string name="about_capgemini_button">Werken bij Capgemini</string>
+    <string name="about_app_version">Capgemini Bank V0.1\nCarlo Matulessy © 2016 </string>
+
+    <string name="url_testnet">https://www.testnet.org/testnet/p000560/evenementen/najaarsevenement-2016-korte-beschrijving-workshops</string>
+    <string name="url_github">https://github.com/cmatulessy/DemoBankApp</string>
+    <string name="url_carlo">http://www.carlomatulessy.com</string>
+    <string name="url_capgemini">https://www.nl.capgemini.com/carriere</string>
+
 </resources>
