@@ -1,17 +1,17 @@
 package com.carlomatulessy.demobankapp;
 
-import android.content.DialogInterface;
+import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.content.res.ResourcesCompat;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -98,31 +98,45 @@ public class MainActivity extends AppCompatActivity {
 
     private void showAccountDetails(int position) {
         final Account selectedAccount = DataBuilder.getAccounts().get(position);
-        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
 
-        alertDialogBuilder.setTitle("Mutation info");
-        alertDialogBuilder
-                .setMessage(selectedAccount.getName() + " - " + "€ "+ String.format("%.2f",selectedAccount.getAmount()))
-                .setCancelable(true)
-                .setPositiveButton("Transfer", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        transferDialogTransfer();
-                    }
-                })
-                .setNegativeButton("Delete", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        transferDialogDelete(selectedAccount);
-                    }
-                });
+        final Dialog dialog = new Dialog(this);
+        dialog.setContentView(R.layout.dialog_mutation_info);
 
-        AlertDialog transferDialog = alertDialogBuilder.create();
-        transferDialog.show();
+        TextView accountName = (TextView) dialog.findViewById(R.id.mutation_account_name);
+        TextView accountIban = (TextView) dialog.findViewById(R.id.mutation_account_iban);
+        TextView accountAmount = (TextView) dialog.findViewById(R.id.mutation_account_amount);
+
+        Button mutationDeleteButton = (Button) dialog.findViewById(R.id.mutation_delete_button);
+        Button mutationTransferButton = (Button) dialog.findViewById(R.id.mutation_transfer_button);
+
+        accountName.setText(selectedAccount.getName());
+        accountIban.setText(selectedAccount.getIban());
+        accountAmount.setText( "- € "+ String.format("%.2f",selectedAccount.getAmount()));
+
+        mutationDeleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                transferDialogDelete(selectedAccount);
+                dialog.dismiss();
+            }
+        });
+
+        mutationTransferButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+                transferDialogNewTransfer(selectedAccount);
+            }
+        });
+
+        dialog.show();
+
     }
 
-    private void transferDialogTransfer() {
-        //TODO implement this
+    private void transferDialogNewTransfer(Account selectedAccount) {
+        TransferActivity.selectedAccount = selectedAccount;
+        Intent intent = new Intent(this, TransferActivity.class);
+        startActivity(intent);
     }
 
     private void transferDialogDelete(Account accountDelete) {

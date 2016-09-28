@@ -4,4 +4,8 @@
     <string name="transfer_button">Transfer</string>
     <string name="next_button">Next</string>
     <string name="account_name">Evelien</string>
+
+    <string name="dialog_mutation_info_title">Mutation info</string>
+    <string name="dialog_mutation_delete_button">Delete</string>
+    <string name="dialog_mutation_transfer_button">Transfer</string>
 </resources>

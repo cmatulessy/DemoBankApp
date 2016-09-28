@@ -14,6 +14,7 @@ import android.widget.Toast;
 public class TransferActivity extends AppCompatActivity {
 
     EditText inputAmount, inputBeneficiary, inputIban, inputAcceptGiro, inputPaymentDescription;
+    public static Account selectedAccount = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +42,11 @@ public class TransferActivity extends AppCompatActivity {
         inputIban = (EditText) findViewById(R.id.transfer_accountnumber_edittext);
         inputAcceptGiro = (EditText) findViewById(R.id.transfer_acceptgiro_edittext);
         inputPaymentDescription = (EditText) findViewById(R.id.transfer_paymentdescription_edittext);
+
+        if(selectedAccount != null) {
+            inputBeneficiary.setText(selectedAccount.getName());
+            inputIban.setText(selectedAccount.getIban());
+        }
 
     }
 
