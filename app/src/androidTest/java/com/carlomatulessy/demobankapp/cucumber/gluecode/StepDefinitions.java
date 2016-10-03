@@ -6,7 +6,6 @@ import android.test.ActivityInstrumentationTestCase2;
 
 import com.carlomatulessy.demobankapp.MainActivity;
 import com.carlomatulessy.demobankapp.R;
-import com.squareup.spoon.Spoon;
 
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
@@ -107,7 +106,7 @@ public class StepDefinitions extends ActivityInstrumentationTestCase2<MainActivi
 
     @And("^I see the screen \"([^\"]*)\"$")
     public void iSeeTheScreen(String screenTitle) throws Throwable {
-        Spoon.screenshot(getActivity(), screenTitle, featureTitle, scenarioTitle);
+        //Spoon.screenshot(getActivity(), screenTitle, featureTitle, scenarioTitle);
 
         int[] screenUIElements;
 

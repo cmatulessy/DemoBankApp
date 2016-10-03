@@ -18,7 +18,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".TransferActivity" />
+        <activity android:name=".TransferActivity" android:windowSoftInputMode="stateAlwaysHidden"/>
         <activity android:name=".SummaryActivity" />
         <activity android:name=".AboutActivity" />
         <activity android:name=".CapgeminiActivity"></activity>
