@@ -10,15 +10,11 @@ import com.carlomatulessy.demobankapp.R;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.And;
-import cucumber.api.java.en.Given;
-import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.action.ViewActions.typeText;
-import static android.support.test.espresso.assertion.ViewAssertions.matches;
-import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 
 /**
@@ -72,6 +68,7 @@ public class StepDefinitions extends ActivityInstrumentationTestCase2<MainActivi
 
         injectInstrumentation(InstrumentationRegistry.getInstrumentation());
         getActivity();
+        assertNotNull(getActivity());
     }
 
     @After
@@ -79,12 +76,7 @@ public class StepDefinitions extends ActivityInstrumentationTestCase2<MainActivi
         super.tearDown();
     }
 
-    @Given("^I am on the dashboard$")
-    public void iAmOnTheDashboard() throws Throwable {
-        assertNotNull(getActivity());
-    }
-
-    @When("^I tap on button \"([^\"]*)\"$")
+    @When("^I tap on button (transfer|next)$")
     public void iTapOnButton(String buttonName) throws Throwable {
 
         int buttonId;
@@ -104,34 +96,7 @@ public class StepDefinitions extends ActivityInstrumentationTestCase2<MainActivi
 
     }
 
-    @And("^I see the screen \"([^\"]*)\"$")
-    public void iSeeTheScreen(String screenTitle) throws Throwable {
-        //Spoon.screenshot(getActivity(), screenTitle, featureTitle, scenarioTitle);
-
-        int[] screenUIElements;
-
-        switch(screenTitle.toLowerCase()) {
-            case "transfer" :
-                screenUIElements = SCREEN_TRANSFER;
-                break;
-            case "summary" :
-                screenUIElements = SCREEN_SUMMARY;
-                break;
-            case "dashboard" :
-                screenUIElements = SCREEN_DASHBOARD;
-                break;
-            default:
-                screenUIElements = SCREEN_DASHBOARD;
-                break;
-        }
-
-        for(int id : screenUIElements) {
-            onView(withId(id)).check(matches(isDisplayed()));
-            // New comment to show stuff
-        }
-    }
-
-    @And("^I enter \"([^\"]*)\" in the \"([^\"]*)\" field$")
+    @And("^I enter ([^\"]*) in the (amount|beneficiary|accountnumber) field$")
     public void iEnterInTheField(String value, String editTextName) throws Throwable {
         int editTextId;
         switch (editTextName) {
@@ -152,10 +117,5 @@ public class StepDefinitions extends ActivityInstrumentationTestCase2<MainActivi
         onView(withId(editTextId)).perform(typeText(value));
 
         Espresso.closeSoftKeyboard();
-    }
-
-    @Then("^my test has passed$")
-    public void myTestHasPassed() throws Throwable {
-        assertTrue(true);
     }
 }
