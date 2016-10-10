@@ -11,12 +11,15 @@ import com.carlomatulessy.demobankapp.R;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.And;
+import cucumber.api.java.en.Given;
 import cucumber.api.java.en.When;
 
+import static android.support.test.espresso.Espresso.onData;
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.action.ViewActions.typeText;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
+import static org.hamcrest.Matchers.anything;
 
 /**
  * Created by CarloMatulessy on 01/08/16.
@@ -24,6 +27,7 @@ import static android.support.test.espresso.matcher.ViewMatchers.withId;
 public class StepDefinitions extends ActivityInstrumentationTestCase2<MainActivity> {
 
     final int ID_PAYMENT_BUTTON = R.id.payment_button;
+    final int ID_MUTATION_TRANSFER_BUTTON = R.id.mutation_transfer_button;
     final int ID_NEXT_BUTTON = R.id.payment_button;
     final int ID_AMOUNT_FIELD = R.id.transfer_amount_edittext;
     final int ID_BENEFICIARY_FIELD = R.id.transfer_beneficiary_edittext;
@@ -51,6 +55,7 @@ public class StepDefinitions extends ActivityInstrumentationTestCase2<MainActivi
 
 
     final String PAYMENT_BUTTON = "transfer";
+    final String MUTATION_TRANSFER_BUTTON = "transfer in mutation info";
     final String NEXT_BUTTON = "next";
     final String AMOUNT_FIELD = "amount";
     final String BENEFICIARY_FIELD = "beneficiary";
@@ -80,7 +85,7 @@ public class StepDefinitions extends ActivityInstrumentationTestCase2<MainActivi
         super.tearDown();
     }
 
-    @When("^I tap on button (transfer|next)$")
+    @When("^I tap on button (transfer|next|transfer in mutation info)$")
     public void iTapOnButton(String buttonName) throws Throwable {
 
         int buttonId = 0;
@@ -90,6 +95,9 @@ public class StepDefinitions extends ActivityInstrumentationTestCase2<MainActivi
                 break;
             case NEXT_BUTTON :
                 buttonId = ID_NEXT_BUTTON;
+                break;
+            case MUTATION_TRANSFER_BUTTON :
+                buttonId = ID_MUTATION_TRANSFER_BUTTON;
                 break;
             default:
                 buttonId = ID_PAYMENT_BUTTON;
@@ -121,5 +129,10 @@ public class StepDefinitions extends ActivityInstrumentationTestCase2<MainActivi
         onView(withId(editTextId)).perform(typeText(value));
 
         Espresso.closeSoftKeyboard();
+    }
+
+    @Given("^I tap on the first mutation item$")
+    public void iTapOnMutationEvelien() throws Throwable {
+        onData(anything()).inAdapterView(withId(R.id.mutation_list)).atPosition(0).perform(click());
     }
 }
