@@ -1,5 +1,6 @@
 package com.carlomatulessy.demobankapp.cucumber.gluecode;
 
+import android.app.Activity;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.espresso.Espresso;
 import android.test.ActivityInstrumentationTestCase2;
@@ -58,6 +59,8 @@ public class StepDefinitions extends ActivityInstrumentationTestCase2<MainActivi
     final String featureTitle = "Feature Payments";
     final String scenarioTitle = "Scenario Outline As a user I want to make a payment";
 
+    private Activity currentActivity;
+
     public StepDefinitions() {
         super(MainActivity.class);
     }
@@ -69,6 +72,7 @@ public class StepDefinitions extends ActivityInstrumentationTestCase2<MainActivi
         injectInstrumentation(InstrumentationRegistry.getInstrumentation());
         getActivity();
         assertNotNull(getActivity());
+        currentActivity = getActivity();
     }
 
     @After
@@ -79,7 +83,7 @@ public class StepDefinitions extends ActivityInstrumentationTestCase2<MainActivi
     @When("^I tap on button (transfer|next)$")
     public void iTapOnButton(String buttonName) throws Throwable {
 
-        int buttonId;
+        int buttonId = 0;
         switch(buttonName.toLowerCase()) {
             case PAYMENT_BUTTON :
                 buttonId = ID_PAYMENT_BUTTON;

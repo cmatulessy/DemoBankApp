@@ -47,7 +47,6 @@ public class MutationListAdapter extends ArrayAdapter {
 
         accountIcon.setImageDrawable(iconDrawable);
 
-
         accountName.setText(accounts.get(position).getName());
         accountIban.setText(accounts.get(position).getIban());
         accountAmount.setText("- € "+ String.format("%.2f",accounts.get(position).getAmount()));
