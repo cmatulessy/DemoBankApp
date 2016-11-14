@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "71096821773",
+    "firebase_url": "https://demobankapp.firebaseio.com",
+    "project_id": "demobankapp",
+    "storage_bucket": "demobankapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:71096821773:android:a848b5577fedc0f5",
+        "android_client_info": {
+          "package_name": "com.carlomatulessy.demobankapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "71096821773-o1kuhlsppv3g9qohd6gthd97p0f4dlbd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDgtrZ3wMkyt38nRuUPeCYA8THqsGp9Pf4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
