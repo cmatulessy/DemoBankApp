@@ -1,5 +1,7 @@
 package com.carlomatulessy.demobankapp.cucumber.resources;
 
+import java.util.HashMap;
+
 /**
  * Created by CMATULES on 14-11-2016
  *
@@ -7,4 +9,8 @@ package com.carlomatulessy.demobankapp.cucumber.resources;
  */
 
 public class ResourceParser {
+
+    public HashMap<String UIElement> getHashMapWithParsedUIElements() {
+
+    }
 }
