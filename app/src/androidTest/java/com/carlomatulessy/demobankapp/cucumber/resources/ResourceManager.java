@@ -1,6 +1,9 @@
 package com.carlomatulessy.demobankapp.cucumber.resources;
 
-import com.carlomatulessy.demobankapp.cucumber.resources.objects.UiElement;
+import android.support.test.InstrumentationRegistry;
+
+import com.carlomatulessy.demobankapp.cucumber.resources.objects.Screen;
+import com.carlomatulessy.demobankapp.cucumber.resources.objects.UIElement;
 
 import java.util.HashMap;
 
@@ -15,16 +18,18 @@ import cucumber.runtime.CucumberException;
 
 public class ResourceManager {
 
-    private ResourceManager instance = null;
+    private static ResourceManager instance = null;
 
-    private HashMap<String, UiElement> uiElementHashMap;
+    private HashMap<String, UIElement> uiElementHashMap;
+    private HashMap<String, Screen> screenHashMap;
 
     protected ResourceManager() {
-        ResourceParser parser = new ResourceParser();
-
+        ResourceLoader loader = new ResourceLoader();
+        uiElementHashMap = loader.getHashMapWithParsedUIElements();
+        screenHashMap = loader.getHashMapWithParsedScreens();
     }
 
-    public ResourceManager getResourceManager() {
+    public static ResourceManager getResourceManager() {
         if(instance == null) {
             instance = new ResourceManager();
         }
@@ -32,12 +37,30 @@ public class ResourceManager {
         return instance;
     }
 
-    public String getResourceIdFromUIElement(String resourceObjectKey) {
+    public int getResourceIdFromUIElement(String resourceObjectKey) {
         if(uiElementHashMap.containsKey(resourceObjectKey)) {
-            return uiElementHashMap.get(resourceObjectKey).toString();
+            return getResourceIdFromResourceObjectKey(uiElementHashMap.get(resourceObjectKey).getAndroid());
         } else {
             throw new CucumberException("ResourceObjectKey "+resourceObjectKey+" could not be found, plesae consult your uielements.json!");
         }
+    }
+
+    public int[] getResourceIdsFromScreen(String screenName) {
+        if(screenHashMap.containsKey(screenName)) {
+            int[] resourceIds = new int[screenHashMap.get(screenName).getAndroid().length];
+
+            for(int i=0; i< resourceIds.length; i++) {
+                resourceIds[i] = getResourceIdFromResourceObjectKey(screenHashMap.get(screenName).getAndroid()[i]);
+            }
+
+            return resourceIds;
+        } else {
+            throw new CucumberException("Screen "+screenName+" could not be found, plesae consult your screens.json!");
+        }
+    }
+
+    private int getResourceIdFromResourceObjectKey(String resourceObjectKey) {
+        return InstrumentationRegistry.getTargetContext().getResources().getIdentifier(resourceObjectKey, "id", InstrumentationRegistry.getTargetContext().getPackageName());
     }
 
 

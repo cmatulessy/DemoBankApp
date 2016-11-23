@@ -1,19 +1,19 @@
 package com.carlomatulessy.demobankapp.cucumber.resources.objects;
 
 /**
- * Created by CMATULES on 14-11-2016.
+ * Created by CarloMatulessy on 23/11/2016.
  */
 
-public class UIElement {
+public class Screen {
     private String key;
-    private String android;
-    private String ios;
+    private String[] android;
+    private String[] ios;
 
     public String getKey() {
         return key;
     }
 
-    public String getAndroid() {
+    public String[] getAndroid() {
         return android;
     }
 }

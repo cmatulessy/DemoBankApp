@@ -1,0 +1,27 @@
+[
+  {
+    "key" : "Transfer",
+    "android" : "payment_button",
+    "ios" : ""
+  },
+  {
+    "key" : "next",
+    "android" : "payment_button",
+    "ios" : ""
+  },
+  {
+    "key" : "amount",
+    "android" : "transfer_amount_edittext",
+    "ios" : ""
+  },
+  {
+    "key" : "beneficiary",
+    "android" : "transfer_beneficiary_edittext",
+    "ios" : ""
+  },
+  {
+    "key" : "accountnumber",
+    "android" : "transfer_accountnumber_edittext",
+    "ios" : ""
+  }
+]

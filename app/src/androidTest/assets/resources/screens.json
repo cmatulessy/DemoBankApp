@@ -1,0 +1,34 @@
+[
+  {
+    "key" : "Transfer",
+    "android" : [
+      "transfer_acceptgiro_edittext",
+      "transfer_accountnumber_edittext",
+      "transfer_amount_edittext",
+      "transfer_beneficiary_edittext",
+      "transfer_paymentdescription_edittext",
+      "payment_button"
+    ],
+    "ios" : []
+  },
+  {
+    "key" : "Summary",
+    "android" : [
+      "summary_accountAmount",
+      "summary_accountIban",
+      "summary_accountIcon",
+      "summary_accountName",
+      "summary_paymentToHeader",
+      "payment_button"
+    ],
+    "ios" : []
+  },
+  {
+    "key" : "Dashboard",
+    "android" : [
+      "mutation_list"
+    ],
+    "ios" : []
+  }
+
+]
