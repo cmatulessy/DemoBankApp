@@ -56,7 +56,7 @@ spoon {
 }
 
 repositories {
-    mavenCentral()
+    jcenter()
 }
 
 dependencies {

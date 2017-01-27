@@ -6,7 +6,11 @@ import android.test.ActivityInstrumentationTestCase2;
 
 import com.carlomatulessy.demobankapp.MainActivity;
 import com.carlomatulessy.demobankapp.cucumber.resources.ResourceManager;
+import com.carlomatulessy.demobankapp.cucumber.spoon.BaseTestCase;
+import com.carlomatulessy.demobankapp.cucumber.spoon.TestCaseManager;
+import com.squareup.spoon.Spoon;
 
+import cucumber.api.Scenario;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.And;
@@ -34,11 +38,14 @@ public class StepDefinitions extends ActivityInstrumentationTestCase2<MainActivi
     }
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp(Scenario scenario) throws Exception {
         super.setUp();
 
+
+        TestCaseManager.getManager().setCurrentTestCase(new BaseTestCase(this, getInstrumentation()));
+        TestCaseManager.getManager().setCurrentScenario(scenario);
+
         injectInstrumentation(InstrumentationRegistry.getInstrumentation());
-        getActivity();
     }
 
     @After
@@ -53,12 +60,13 @@ public class StepDefinitions extends ActivityInstrumentationTestCase2<MainActivi
 
     @When("^I tap on button \"([^\"]*)\"$")
     public void iTapOnButton(String resourceObjectKey) throws Throwable {
+        Spoon.screenshot(TestCaseManager.getManager().getCurrentTestCase().getCurrentActivity(), resourceObjectKey, featureTitle, scenarioTitle);
         onView(withId(ResourceManager.getResourceManager().getResourceIdFromUIElement(resourceObjectKey.toLowerCase()))).perform(click());
     }
 
     @And("^I see the screen \"([^\"]*)\"$")
     public void iSeeTheScreen(String screenName) throws Throwable {
-        //Spoon.screenshot(getActivity(), screenTitle, featureTitle, scenarioTitle);
+        Spoon.screenshot(TestCaseManager.getManager().getCurrentTestCase().getCurrentActivity(), screenName, featureTitle, scenarioTitle);
 
         for(int id : ResourceManager.getResourceManager().getResourceIdsFromScreen(screenName.toLowerCase())) {
             onView(withId(id)).check(matches(isDisplayed()));
@@ -69,6 +77,7 @@ public class StepDefinitions extends ActivityInstrumentationTestCase2<MainActivi
     public void iEnterInTheField(String value, String resourceObjectKey) throws Throwable {
         onView(withId(ResourceManager.getResourceManager().getResourceIdFromUIElement(resourceObjectKey.toLowerCase()))).perform(typeText(value));
         Espresso.closeSoftKeyboard();
+        Spoon.screenshot(TestCaseManager.getManager().getCurrentTestCase().getCurrentActivity(), resourceObjectKey, featureTitle, scenarioTitle);
     }
 
     @Then("^my test has passed$")
