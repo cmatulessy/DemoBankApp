@@ -9,7 +9,7 @@ import cucumber.api.CucumberOptions;
  */
 @CucumberOptions(
         features = "features",
-        tags = "",
+        tags = "@test",
         glue = "com.carlomatulessy.demobankapp.cucumber.gluecode")
 public class CucumberTestCase extends TestCase{
 }

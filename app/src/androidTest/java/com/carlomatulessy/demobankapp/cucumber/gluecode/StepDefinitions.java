@@ -8,6 +8,7 @@ import com.carlomatulessy.demobankapp.MainActivity;
 
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
+import cucumber.api.java.en.Given;
 
 /**
  * Created by CarloMatulessy on 01/08/16.
@@ -25,13 +26,17 @@ public class StepDefinitions extends ActivityInstrumentationTestCase2<MainActivi
         super.setUp();
 
         injectInstrumentation(InstrumentationRegistry.getInstrumentation());
-        getActivity();
-        assertNotNull(getActivity());
-        currentActivity = getActivity();
     }
 
     @After
     public void tearDown() throws Exception {
         super.tearDown();
+    }
+
+    @Given("^I start the app$")
+    public void iStartTheApp() throws Throwable {
+        if(currentActivity == null) {
+            currentActivity = getActivity();
+        }
     }
 }
