@@ -1,11 +1,14 @@
-@test
-Feature: make a payment
-  Scenario: as a user I want to transfer money
-    Given I start the app
-    When I make a transfer
-    Then I see a transaction
+Feature: Payments
+  * amount above 100 euro are charged with fee
+  * ABN recipients don't pay a transfer fee
+  * ING recipients pay a transfer fee
 
-  Scenario: as a user I want to transfer money again
-    Given I start the app
-    When I make a transfer
-    Then I see a transaction
+  Scenario Outline: Calculate the transfer fee and add it to the amount to pay
+    Given the <recipient> is from
+    When I do a payment to <amount> is
+    Then the payment is cha
+
+  Examples:
+  | recipient | amount | fee | shipping rate |
+  | ABN       | 10     | 0.00      | Standard Domestic |
+  | ING       | 10     | 1.00     | Free |
