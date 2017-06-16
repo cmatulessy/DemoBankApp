@@ -3,12 +3,14 @@ Feature: Payments
   * ABN recipients don't pay a transfer fee
   * ING recipients pay a transfer fee
 
+
+  @test
   Scenario Outline: Calculate the transfer fee and add it to the amount to pay
-    Given the <recipient> is from
-    When I do a payment to <amount> is
+    Given the user <recipient bank name>
+    When I create a payment with <amount>
     Then the customer is charged with <fee>
 
   Examples:
-  | recipient | amount | fee |
-  | ABN       | 10     | 0.00|
-  | ING       | 10     | 1.00| 
+  | recipient bank name | amount  | fee   |
+  | ABN                 | 1.00    | 0.00  |
+  | ING                 | 1.00    | 0.25  |
