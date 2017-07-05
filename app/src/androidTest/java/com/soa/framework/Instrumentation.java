@@ -1,4 +1,4 @@
-package com.carlomatulessy.demobankapp.cucumber;
+package com.soa.framework;
 
 import android.os.Bundle;
 import android.support.test.runner.MonitoringInstrumentation;

@@ -10,6 +10,7 @@ import com.carlomatulessy.demobankapp.cucumber.spoon.BaseTestCase;
 import com.carlomatulessy.demobankapp.cucumber.spoon.TestCaseManager;
 import com.squareup.spoon.Spoon;
 
+import cucumber.api.PendingException;
 import cucumber.api.Scenario;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
@@ -84,4 +85,6 @@ public class StepDefinitions extends ActivityInstrumentationTestCase2<MainActivi
     public void myTestHasPassed() throws Throwable {
         assertTrue(true);
     }
+
+
 }

@@ -1,4 +1,4 @@
-package com.carlomatulessy.demobankapp.cucumber.test;
+package com.soa.framework.cucumber;
 
 import junit.framework.TestCase;
 
@@ -10,6 +10,6 @@ import cucumber.api.CucumberOptions;
 @CucumberOptions(
         features = "features",
         tags = "@test",
-        glue = "com.carlomatulessy.demobankapp.cucumber.gluecode")
+        glue = "com.soa.app")
 public class CucumberTestCase extends TestCase{
 }
