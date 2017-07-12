@@ -1,6 +1,10 @@
 package com.soa.framework.app;
 
+import com.carlomatulessy.demobankapp.R;
 import com.soa.framework.app.configuration.Settings;
+import com.soa.framework.core.actors.Actor;
+import com.soa.framework.core.actors.ActorManager;
+import com.soa.framework.core.interactions.Enter;
 
 import cucumber.api.java.en.Given;
 
@@ -14,6 +18,7 @@ public class Common extends Settings{
     public void carloHasAnAccountOnTheDemoBankApp(String actorName) throws Throwable {
         assertNotNull(getActivity());
 
-        //TODO create actor
+        Actor selectedActor = ActorManager.getInstance().getSelectedActorByName(actorName);
+        selectedActor.attemptsTo(Enter.theValue("test").into(R.id.mutation_transfer_button));
     }
 }

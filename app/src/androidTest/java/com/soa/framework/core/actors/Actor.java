@@ -1,10 +1,12 @@
 package com.soa.framework.core.actors;
 
+import com.soa.framework.core.tasks.Task;
+
 /**
  * Created by Carlo Matulessy on 5-7-17.
  */
 
-public class Actor {
+public class Actor extends Task{
 
     private String name;
     private String iban;
